@@ -1,0 +1,133 @@
+@import "colors";
+@import "~normalize.css";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500');
+
+//* {
+//  outline: 1px solid red;
+//}
+
+body {
+  background-image: url("../img/background.jpg");
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.custom__filter {
+  background: rgba(255, 255, 255, .3);
+  position: absolute;
+  filter: blur(2px);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: .5fr 4fr .5fr;
+  grid-auto-rows: 80vh;
+  margin: 8vh;
+  min-width: 1200px;
+}
+
+.game__player {
+  display: grid;
+  grid-column: 2/3;
+  grid-template-columns: 3fr 1fr 3fr;
+}
+
+%game__player-panel {
+  background-color: $mainPanelColor;
+  grid-auto-rows: 200px;
+  opacity: .6;
+
+  &.active {
+    background: $mainPanelColor;
+    opacity: 1;
+    transition: all 1s ease;
+  }
+}
+
+%game__control-btn {
+  width: 110%;
+  margin-left: -5%;
+  z-index: 1;
+  position: absolute;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #3f3f3f;
+  color: white;
+}
+
+.game__player-panel--0 {
+  @extend %game__player-panel;
+  grid-column: 1/2;
+  filter: drop-shadow(8px 8px 8px #b0b0b0);
+}
+
+.game__player-panel--1 {
+  @extend %game__player-panel;
+  grid-column: 3/4;
+  filter: drop-shadow(-4px 8px 8px #b0b0b0);
+}
+
+.game__control {
+  background-color: rgba(255, 255, 255, .2);
+  position: relative;
+}
+
+.game__player-header {
+  height: 100px;
+}
+
+.game__player-name {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 46px;
+  color: #565656;
+
+  &.active {
+    color: #ff9800;
+  }
+}
+
+.game__player-total {
+  text-align: center;
+  font-size: 180px;
+  font-weight: 300;
+  margin: 0;
+  color: #3f3f3f;
+}
+
+.game__player-current-label {
+  text-align: center;
+  text-transform: uppercase;
+  color: #3f3f3f;
+}
+
+.game__player-current {
+  text-align: center;
+  font-size: 68px;
+  font-weight: 400;
+  color: #3f3f3f;
+  margin-bottom: 0;
+}
+
+.game__control-btn-new {
+  @extend %game__control-btn;
+  bottom: 10px;
+}
+
+.game__control-btn-roll {
+  @extend %game__control-btn;
+  bottom: 49px;
+}
+
+.game__control-btn-hold {
+  @extend %game__control-btn;
+  bottom: 88px;
+}
