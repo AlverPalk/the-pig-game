@@ -84,7 +84,7 @@ function hold() {
         if (status.scores[status.activePlayer] >= status.winningScore) {
             status.isRunning = false;
             playerView.declareWinner();
-            playerView.toggleActivePlayer();
+            playerView.removoeActivePlayer();
             disBtns();
         } else {
             switchPlayer();
