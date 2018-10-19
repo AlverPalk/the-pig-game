@@ -1,0 +1,1 @@
+![alt text](https://github.com/AlverPalk/the-pig-game/blob/master/screenshot.png)
