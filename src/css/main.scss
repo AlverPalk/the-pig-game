@@ -2,10 +2,6 @@
 @import "~normalize.css";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500');
 
-//* {
-//  outline: 1px solid red;
-//}
-
 body {
   background-image: url("../img/background.jpg");
   font-family: 'Montserrat', sans-serif;
@@ -25,9 +21,9 @@ body {
 
 .game {
   display: grid;
-  grid-template-columns: .5fr 4fr .5fr;
-  grid-auto-rows: 80vh;
-  margin: 8vh;
+  grid-template-columns: .5fr 2fr .5fr;
+  grid-auto-rows: 70vh;
+  margin: 10vh;
   min-width: 1200px;
 }
 
@@ -40,32 +36,50 @@ body {
 %game__player-panel {
   background-color: $mainPanelColor;
   grid-auto-rows: 200px;
+  padding-top: 20px;
   opacity: .6;
+  transition: opacity .6s ease;
 
   &.active {
     background: $mainPanelColor;
     opacity: 1;
-    transition: all 1s ease;
+    transition: opacity .6s ease;
   }
 }
 
 %game__control-btn {
-  width: 110%;
-  margin-left: -5%;
+  width: 105%;
+  margin-left: -2.5%;
   z-index: 1;
   position: absolute;
   border: none;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #3f3f3f;
+  background-color: rgba(82, 82, 82, .8);
   color: white;
+
+  &:hover {
+    background-color: rgba(82, 82, 82, 1);
+    transition: .2s ease;
+  }
+
+  &.disabled {
+    background-color: rgba(82, 82, 82, .4);
+  }
+}
+
+%game__control-dice {
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+  display: flex;
 }
 
 .game__player-panel--0 {
   @extend %game__player-panel;
   grid-column: 1/2;
-  filter: drop-shadow(8px 8px 8px #b0b0b0);
+  filter: drop-shadow(4px 8px 8px #b0b0b0);
 }
 
 .game__player-panel--1 {
@@ -77,6 +91,7 @@ body {
 .game__control {
   background-color: rgba(255, 255, 255, .2);
   position: relative;
+  padding-top: 60px;
 }
 
 .game__player-header {
@@ -87,11 +102,11 @@ body {
   text-align: center;
   text-transform: uppercase;
   font-weight: 300;
-  font-size: 46px;
+  font-size: 42px;
   color: #565656;
 
   &.active {
-    color: #ff9800;
+    color: $baseColor;
   }
 }
 
@@ -109,12 +124,20 @@ body {
   color: #3f3f3f;
 }
 
-.game__player-current {
+%game__player-current {
   text-align: center;
   font-size: 68px;
   font-weight: 400;
   color: #3f3f3f;
   margin-bottom: 0;
+}
+
+.game__player-current--0 {
+  @extend %game__player-current;
+}
+
+.game__player-current--1 {
+  @extend %game__player-current;
 }
 
 .game__control-btn-new {
@@ -130,4 +153,22 @@ body {
 .game__control-btn-hold {
   @extend %game__control-btn;
   bottom: 88px;
+}
+
+.game__control-dice--0 {
+  @extend %game__control-dice;
+}
+
+.game__control-dice--1 {
+  @extend %game__control-dice;
+}
+
+.game__control-goal {
+  position: absolute;
+  top: -60px;
+  left: -1em;
+}
+
+.game__control-goal-input {
+  padding: 1em;
 }
